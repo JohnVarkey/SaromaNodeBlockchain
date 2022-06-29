@@ -1,0 +1,43 @@
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+version: '3.7'
+
+networks:
+  ledgermail:
+    name: ledgermailtest
+
+services:
+  ganache:
+    container_name: ganache
+    image: ledgermail/ganache:1.0
+    labels:
+      service: ledgermail-ganache
+    ports:
+      - "8545:8545"
+    volumes:
+        - /usr/ganache_data:/app/ledgerganache
+           
+    networks:
+      - ledgermail
+
+  db:
+    container_name: pgsql
+    image: postgres:14.2
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ledgermail@123#
+      POSTGRES_DB: test_db
+    ports:
+      - "5432:5432"
+    volumes: 
+      - db:/var/lib/postgresql/ledger
+    networks:
+      - ledgermail 
+
+volumes:
+  db:
+    driver: local           
