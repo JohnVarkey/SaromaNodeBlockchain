@@ -22,7 +22,7 @@
 //
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
-const mnemonic= "blush monster push wheat lazy drama unable dose cotton dignity path people";
+const mnemonic = "about skirt wage pledge machine boy vehicle circle dress rabbit current pond";
 const infuraURL= "https://rinkeby.infura.io/v3/7184369be1fb48d9b1c04cd3d6240e04";
 module.exports = {
   /**
